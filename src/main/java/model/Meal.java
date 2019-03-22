@@ -2,6 +2,7 @@ package model;
 
 public class Meal {
 
+    private Long id;
     private String name;
     private double price;
     private int quantity;
@@ -10,6 +11,14 @@ public class Meal {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
+    }
+
+    public Long getId(){
+        return id;
+    }
+
+    public void setId(Long id){
+        this.id = id;
     }
 
     public String getName() {
