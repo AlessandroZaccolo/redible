@@ -1,11 +1,11 @@
 CREATE TABLE meals (
       id INT AUTO_INCREMENT PRIMARY KEY,
       name VARCHAR(100),
-      price DOUBLE,
       quantity INT,
+      price DOUBLE
 );
 
-insert into meals (name, price, quantity) values
-('Pasta', '2.3','2'),
-('Pizza', '2.3','2'),
-('Gnocchi', '2.3', '2');
+insert into meals (name, quantity, price) values
+('Pasta', '2','2.4'),
+('Pizza', '2','2.5'),
+('Gnocchi', '2', '2.6');
