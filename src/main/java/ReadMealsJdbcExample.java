@@ -16,6 +16,7 @@ public class ReadMealsJdbcExample {
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery("select * from meals");
 
+
         while (rs.next()) {
 
             int id = rs.getInt("id");
@@ -23,8 +24,10 @@ public class ReadMealsJdbcExample {
             int quantity = rs.getInt("quantity");
             double price = rs.getDouble("price");
 
-            System.out.println(id + ", dish: " + name + ", Qty: " + quantity + ", Price: " + price);
+            System.out.println(id + ", Dish: " + name + ", Qty: " + quantity + ", Price: " + price);
         }
+
+
 
         rs.close();
         statement.close();
