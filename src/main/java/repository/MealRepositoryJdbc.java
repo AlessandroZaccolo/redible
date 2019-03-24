@@ -1,6 +1,7 @@
 package repository;
 
 import model.Meal;
+import model.MealSearch;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -70,6 +71,14 @@ public class MealRepositoryJdbc {
                 (rs1, rowNum) -> getMeal(rs1));
     }
 
-    
 
+    public Collection<Meal> find(MealSearch mealSearch) {
+
+        String sql = "select * from meals";
+
+        sql += "where name = '"+ mealSearch.name + "'";
+
+        return jdbcTemplate.query(sql, (rs1, rowNum) -> getMeal(rs1) );
+
+    }
 }

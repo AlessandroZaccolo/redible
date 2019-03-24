@@ -2,8 +2,10 @@ package controller;
 
 import controller.errors.MealNotExistsException;
 import model.Meal;
+import model.MealSearch;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import service.MealService;
@@ -39,6 +41,13 @@ public class MealApiController {
     public Collection<Meal> getAllMeals(){
         return mealService.getAllMeals();
     }
+
+    @RequestMapping(method= GET, path ="find")
+    public Collection<Meal> findMeals(@RequestBody MealSearch mealSearch){
+
+        return mealService.find(mealSearch);
+    }
+
 
 
 

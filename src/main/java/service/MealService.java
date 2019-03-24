@@ -1,6 +1,7 @@
 package service;
 
 import model.Meal;
+import model.MealSearch;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import repository.MealRepositoryJdbc;
@@ -26,5 +27,12 @@ public class MealService {
 
         return mealRepo.getAllMeals();
     }
+
+
+    public Collection<Meal> find(MealSearch mealSearch){
+
+        return mealRepo.find(mealSearch);
+    }
+
 
 }
