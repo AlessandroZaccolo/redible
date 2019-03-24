@@ -14,6 +14,6 @@ axios.get("/api/meals")
 
             const p = document.createElement("div");
             p.textContent = `${meal.id}, Dish: ${meal.name}, Qty: ${meal.quantity},Qty: ${meal.price}`;
-            gamesContainer.appendChild(p);
+            mealsContainer.appendChild(p);
         }
     });
