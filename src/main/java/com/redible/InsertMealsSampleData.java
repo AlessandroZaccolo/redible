@@ -1,6 +1,8 @@
+package com.redible;
+
+import com.redible.repository.DataSourceUtil;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.datasource.init.ScriptUtils;
-import repository.DataSourceUtil;
 
 import javax.sql.DataSource;
 import java.sql.Connection;

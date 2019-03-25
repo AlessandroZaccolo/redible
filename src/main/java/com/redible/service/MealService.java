@@ -1,10 +1,10 @@
-package service;
+package com.redible.service;
 
-import model.Meal;
-import model.MealSearch;
+import com.redible.model.Meal;
+import com.redible.model.MealSearch;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repository.MealRepositoryJdbc;
+import com.redible.repository.MealRepositoryJdbc;
 
 import java.util.Collection;
 

@@ -1,8 +1,7 @@
-package repository;
+package com.redible.repository;
 
-import model.Meal;
-import model.MealSearch;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.redible.model.Meal;
+import com.redible.model.MealSearch;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 

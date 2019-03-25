@@ -1,4 +1,6 @@
-import repository.DataSourceUtil;
+package com.redible;
+
+import com.redible.repository.DataSourceUtil;
 
 import javax.sql.DataSource;
 import java.sql.Connection;

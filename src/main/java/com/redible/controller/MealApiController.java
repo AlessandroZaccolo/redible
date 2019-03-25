@@ -1,14 +1,14 @@
-package controller;
+package com.redible.controller;
 
-import controller.errors.MealNotExistsException;
-import model.Meal;
-import model.MealSearch;
+import com.redible.controller.errors.MealNotExistsException;
+import com.redible.model.Meal;
+import com.redible.model.MealSearch;
+import com.redible.service.MealService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import service.MealService;
 
 import java.util.Collection;
 

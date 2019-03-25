@@ -1,4 +1,4 @@
-package repository;
+package com.redible.repository;
 
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
