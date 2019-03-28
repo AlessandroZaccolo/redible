@@ -13,7 +13,7 @@ axios.get("/api/meals")
         for (let meal of meals) {
 
             const p = document.createElement("div");
-            p.textContent = `${meal.id}, Dish: ${meal.name}, Qty: ${meal.quantity},Qty: ${meal.price}`;
+            p.textContent = `id:  ${meal.id}, Dish:  ${meal.name}, Qty:  ${meal.quantity}, Price: € ${meal.price}`;
             mealsContainer.appendChild(p);
         }
     });
