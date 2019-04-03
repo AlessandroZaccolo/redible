@@ -6,11 +6,16 @@ public class Meal {
     private String name;
     private double price;
     private int quantity;
+    private double discount;
+    private double rating;
 
-    public Meal(String name, double price, int quantity) {
+
+    public Meal(String name, double price, int quantity, double discount) {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
+        this.discount = discount;
+        this.rating = 0.0;
     }
 
     public Long getId(){
@@ -44,6 +49,21 @@ public class Meal {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
+    public double getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(double discount) {
+        this.discount = discount;
+    }
+
+    public double getDiscountedPrice() {
+
+        return price * (1 - discount / 100);
+    }
+
+
 
 
 }
