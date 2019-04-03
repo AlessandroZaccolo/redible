@@ -13,8 +13,8 @@ import java.util.Collection;
 /**
  * Stores meals in a database
  */
-@Repository
-public class MealRepositoryJdbc {
+
+public class MealRepositoryJdbc implements MealRepository {
 
     private JdbcTemplate jdbcTemplate;
 
@@ -57,8 +57,9 @@ public class MealRepositoryJdbc {
         String name = rs.getString("name");
         int quantity = rs.getInt("quantity");
         double price = rs.getDouble("price");
+        double discount = rs.getDouble("discount");
 
-        Meal meal = new Meal(name, price, quantity);
+        Meal meal = new Meal(name, price, quantity, discount);
         meal.setId(id);
 
         return meal;
