@@ -16,6 +16,7 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
+
     @Bean
     public CommandLineRunner test(
             MealService mealService,

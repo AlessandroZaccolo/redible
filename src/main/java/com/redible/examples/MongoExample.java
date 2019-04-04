@@ -1,5 +1,7 @@
 package com.redible.examples;
 
+import com.mongodb.BasicDBObject;
+import com.mongodb.DBObject;
 import com.mongodb.client.*;
 import com.redible.util.database.MongoUtil;
 import org.bson.Document;
@@ -22,31 +24,43 @@ public class MongoExample {
 
 
         /*
-        Document meal2 = doc().append("name", "Capricciosa")
+
+        Document meal1 = doc().append("name", "Capricciosa")
                 .append("price", 12.0).append("quantity", 3).append("discount", 0.45);
 
+        Document meal2 = doc().append("name", "Gnocchi")
+                .append("price", 6.0).append("quantity", 1).append("discount", 0.6);
 
-        mealsCol.insertOne(meal2);
+        Document meal3 = doc().append("name", "Sushi")
+                .append("price", 4.0).append("quantity", 4).append("discount", 0.7);
+
+
+        Document meal4 = doc().append("name", "Pesto Pasta")
+                .append("price", 6.0).append("quantity", 2).append("discount", 0.45);
+
+
         */
 
 
 
-        MongoCursor<Document> productsCursor = mealsCol.find().iterator();
+        MongoCursor<Document> mealsCursor = mealsCol.find().iterator();
 
-        while(productsCursor.hasNext()){
-            Document meal = productsCursor.next();
+
+        while(mealsCursor.hasNext()){
+            Document meal = mealsCursor.next();
+
             String name = meal.getString("name");
             double price = meal.getDouble("price");
             int quantity = meal.getInteger("quantity");
             double discount = meal.getDouble("discount");
-            ObjectId id = meal.getObjectId("_id");
+            ObjectId mongoId = meal.getObjectId("_id");
 
 
-            System.out.println(id +" Meal: "+ name +" Full-Price: "+ price
+            System.out.println(mongoId +" Meal: "+ name +" Full-Price: "+ price
                     +" € Qty: " + quantity +" Discount: " + discount +"%");
         }
 
-        productsCursor.close();
+        mealsCursor.close();
 
 
 

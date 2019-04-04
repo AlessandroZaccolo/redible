@@ -1,9 +1,10 @@
 package com.redible.repository;
 
+import com.mongodb.client.FindIterable;
 import com.redible.model.Meal;
 import com.redible.model.MealSearch;
+import org.bson.Document;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
 import java.sql.ResultSet;
@@ -65,11 +66,15 @@ public class MealRepositoryJdbc implements MealRepository {
         return meal;
     }
 
+
     public Collection<Meal> getAllMeals(){
 
         return jdbcTemplate.query("select * from meals",
                 (rs1, rowNum) -> getMeal(rs1));
     }
+
+
+
 
 
     public Collection<Meal> find(MealSearch mealSearch) {
