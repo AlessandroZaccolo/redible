@@ -60,7 +60,7 @@ public class Meal {
 
     public double getDiscountedPrice() {
 
-        return price * (1 - discount / 100);
+        return price * (1 - discount);
     }
 
 
