@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Collection;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @RestController
 @RequestMapping(path="/api/meals")
@@ -23,6 +24,13 @@ public class MealApiController {
     @Autowired
     public MealApiController(MealService mealService){
         this.mealService = mealService;
+    }
+
+
+    @RequestMapping(method = POST)
+    public void addMeal(Meal meal){
+
+        mealService.add(meal);
     }
 
     @RequestMapping(method = GET, path="/{mealId}")
