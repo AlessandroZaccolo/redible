@@ -38,7 +38,7 @@ public class MealRepositoryJdbc implements MealRepository {
                 "name = '" + meal.getName() + "', " +
                 "quantity = '" + meal.getQuantity() + "', " +
                 "price = " + meal.getPrice() + " " +
-                "where id = " + meal.getId();
+                "where id = " + meal.getMealId();
 
         //System.out.println("SQL: " + sql);
         jdbcTemplate.update(sql);
@@ -60,8 +60,8 @@ public class MealRepositoryJdbc implements MealRepository {
         double price = rs.getDouble("price");
         double discount = rs.getDouble("discount");
 
-        Meal meal = new Meal(name, price, quantity, discount);
-        meal.setId(id);
+        Meal meal = new Meal (name, price, quantity, discount);
+        meal.setMealId(id);
 
         return meal;
     }

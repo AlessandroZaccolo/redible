@@ -5,7 +5,6 @@ import com.redible.model.Meal;
 import com.redible.model.MealSearch;
 import com.redible.util.database.MongoUtil;
 import org.bson.Document;
-import org.bson.types.ObjectId;
 import org.springframework.stereotype.Repository;
 
 import java.util.*;
@@ -15,28 +14,31 @@ public class MealRepositoryMongo implements MealRepository{
 
 
     private MongoCollection<Document> mealsCol;
-    private MealRepository mealsMap;
+    private long mealId;
 
     public MealRepositoryMongo(){
         MongoClient mongoClient = MongoClients.create();
         MongoDatabase database = mongoClient.getDatabase("mealsdb");
         this.mealsCol = database.getCollection("meals");
-
+        mealId = 0;
     }
 
     @Override
     public void add(Meal meal) {
 
+        meal.setMealId(mealId);
+
         Document mealDoc = MongoUtil.doc()
+                .append("mealId", meal.getMealId())
                 .append("name", meal.getName())
                 .append("price", meal.getPrice())
                 .append("quantity", meal.getQuantity())
                 .append("discount", meal.getDiscount());
 
+
         mealsCol.insertOne(mealDoc);
 
-        mealsMap.add(meal);
-
+        mealId++;
 
     }
 
@@ -54,12 +56,13 @@ public class MealRepositoryMongo implements MealRepository{
 
     private Meal getMeal(Document mealDoc){
 
+
         String name = mealDoc.getString("name");
         double price = mealDoc.getDouble("price");
         int quantity = mealDoc.getInteger("quantity");
         double discount = mealDoc.getDouble("discount");
 
-        Meal meal = new Meal(name, price, quantity,discount);
+        Meal meal = new Meal(name, price, quantity, discount);
 
         return meal;
 

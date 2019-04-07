@@ -3,6 +3,7 @@ package com.redible.service;
 import com.redible.model.Meal;
 import com.redible.model.MealSearch;
 import com.redible.repository.MealRepository;
+import com.redible.repository.MealRepositoryMongo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.redible.repository.MealRepositoryJdbc;
@@ -13,10 +14,14 @@ import java.util.Collection;
 public class MealService {
 
 
-    private MealRepository mealRepo;
+    private MealRepositoryMongo mealRepo;
 
     @Autowired
-    public MealService(MealRepository mealRepo) { this.mealRepo = mealRepo; }
+    public MealService(MealRepositoryMongo mealRepo) { this.mealRepo = mealRepo; }
+
+    public void add(Meal meal){
+        mealRepo.add(meal);
+    }
 
 
     public Meal getMealById(long id){

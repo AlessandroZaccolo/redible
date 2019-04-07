@@ -2,15 +2,15 @@ package com.redible.model;
 
 public class Meal {
 
-    private Long id;
+    private long mealId;
     private String name;
     private double price;
     private int quantity;
     private double discount;
     private double rating;
 
-
-    public Meal(String name, double price, int quantity, double discount) {
+    public Meal (String name, double price, int quantity, double discount) {
+        this.mealId = mealId;
         this.name = name;
         this.price = price;
         this.quantity = quantity;
@@ -18,13 +18,16 @@ public class Meal {
         this.rating = 0.0;
     }
 
-    public Long getId(){
-        return id;
+
+    public long getMealId() {
+        return mealId;
     }
 
-    public void setId(Long id){
-        this.id = id;
+    public void setMealId(long mealId) {
+        this.mealId = mealId;
     }
+
+
 
     public String getName() {
         return name;
@@ -61,6 +64,12 @@ public class Meal {
     public double getDiscountedPrice() {
 
         return price * (1 - discount);
+    }
+
+
+    @Override
+    public String toString(){
+        return "id: "+ mealId + " name: " + name;
     }
 
 
