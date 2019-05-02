@@ -36,7 +36,7 @@ public class MealApiController {
     @RequestMapping(method = GET, path="/{mealId}")
     public Meal getMealById(@PathVariable long mealId){
 
-        final Meal meal = mealService.getMealById(mealId);
+        Meal meal = mealService.getMealById(mealId);
 
         if(meal != null){
             return meal;
