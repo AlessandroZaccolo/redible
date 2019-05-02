@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
+import static com.mongodb.client.model.Filters.eq;
+
 @Repository
 public class MealRepositoryMongo implements MealRepository{
 
@@ -46,14 +48,22 @@ public class MealRepositoryMongo implements MealRepository{
     @Override
     public void update(Meal meal) {
 
+        mealsCol.updateOne(eq("mealId", meal.getMealId()), new Document("$set", new Document("name", meal.getName())));
+        mealsCol.updateOne(eq("mealId", meal.getMealId()), new Document("$set", new Document("price", meal.getPrice())));
+        mealsCol.updateOne(eq("mealId", meal.getMealId()), new Document("$set", new Document("quantity", meal.getQuantity())));
+        mealsCol.updateOne(eq("mealId", meal.getMealId()), new Document("$set", new Document("discount", meal.getDiscount())));
     }
 
     @Override
-    public Meal getById(long id) {
+    public void remove(Meal meal){
 
+    }
 
+    public Meal getMealById(long mealId) {
 
-        return null;
+        Meal meal = getMeal(mealsCol.find(eq("mealId", mealId)).first());
+
+        return meal;
     }
 
     private Meal getMeal(Document mealDoc){
@@ -64,7 +74,7 @@ public class MealRepositoryMongo implements MealRepository{
         int quantity = mealDoc.getInteger("quantity");
         double discount = mealDoc.getDouble("discount");
 
-        Meal meal = new Meal(mealId,name, price, quantity, discount);
+        Meal meal = new Meal(mealId, name, price, quantity, discount);
 
         return meal;
 

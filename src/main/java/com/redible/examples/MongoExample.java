@@ -7,6 +7,7 @@ import com.redible.repository.MealRepositoryMongo;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 
+import static com.mongodb.client.model.Filters.eq;
 import static com.redible.util.database.MongoUtil.doc;
 
 public class MongoExample {
@@ -71,14 +72,15 @@ public class MongoExample {
 
 
         while(mealsCursor.hasNext()){
+
             Document meal = mealsCursor.next();
+
 
             long mealId = meal.getLong("mealId");
             String name = meal.getString("name");
             double price = meal.getDouble("price");
             int quantity = meal.getInteger("quantity");
             double discount = meal.getDouble("discount");
-            ObjectId mongoId = meal.getObjectId("_id");
 
 
 
@@ -91,8 +93,14 @@ public class MongoExample {
         mealsCursor.close();
 
 
+        Document meal = mealsCol.find(eq("mealId", 3)).first();
+
+        System.out.println(meal);
+
+        mealsCol.updateOne(eq("mealId", 3), new Document ("$set", new Document("price", 8.0)));
 
 
+        System.out.println(meal);
 
     }
 }
