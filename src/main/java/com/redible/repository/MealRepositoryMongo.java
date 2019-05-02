@@ -29,12 +29,11 @@ public class MealRepositoryMongo implements MealRepository{
         meal.setMealId(mealId);
 
         Document mealDoc = MongoUtil.doc()
-                .append("mealId", meal.getMealId())
+                .append("mealId", mealId)
                 .append("name", meal.getName())
                 .append("price", meal.getPrice())
                 .append("quantity", meal.getQuantity())
                 .append("discount", meal.getDiscount());
-
 
         mealsCol.insertOne(mealDoc);
 
@@ -51,18 +50,21 @@ public class MealRepositoryMongo implements MealRepository{
 
     @Override
     public Meal getById(long id) {
+
+
+
         return null;
     }
 
     private Meal getMeal(Document mealDoc){
 
-
+        long mealId = mealDoc.getLong("mealId");
         String name = mealDoc.getString("name");
         double price = mealDoc.getDouble("price");
         int quantity = mealDoc.getInteger("quantity");
         double discount = mealDoc.getDouble("discount");
 
-        Meal meal = new Meal(name, price, quantity, discount);
+        Meal meal = new Meal(mealId,name, price, quantity, discount);
 
         return meal;
 

@@ -1,8 +1,11 @@
 package com.redible.model;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
 public class Meal {
 
-    private long mealId;
+    private long mealId = 0;
     private String name;
     private double price;
     private int quantity;
@@ -10,6 +13,14 @@ public class Meal {
     private double rating;
 
     public Meal (String name, double price, int quantity, double discount) {
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+        this.discount = discount;
+        this.rating = 0.0;
+    }
+
+    public Meal (long mealId, String name, double price, int quantity, double discount) {
         this.mealId = mealId;
         this.name = name;
         this.price = price;
@@ -17,6 +28,7 @@ public class Meal {
         this.discount = discount;
         this.rating = 0.0;
     }
+
 
 
     public long getMealId() {
@@ -57,13 +69,15 @@ public class Meal {
         return discount;
     }
 
-    public void setDiscount(double discount) {
+    public void setDiscount(float discount) {
         this.discount = discount;
     }
 
     public double getDiscountedPrice() {
 
-        return price * (1 - discount);
+        double discountedPrice = price * (1 - discount);
+        double result = Math.round(discountedPrice*1000d)/1000d;
+        return result;
     }
 
 

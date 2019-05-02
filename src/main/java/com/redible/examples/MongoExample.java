@@ -73,7 +73,7 @@ public class MongoExample {
         while(mealsCursor.hasNext()){
             Document meal = mealsCursor.next();
 
-
+            long mealId = meal.getLong("mealId");
             String name = meal.getString("name");
             double price = meal.getDouble("price");
             int quantity = meal.getInteger("quantity");
@@ -84,7 +84,7 @@ public class MongoExample {
 
 
 
-            System.out.println(mongoId +" Meal: "+ name +" Full-Price: "+ price
+            System.out.println(mealId+" Meal: "+ name +" Full-Price: "+ price
                     +" € Qty: " + quantity +" Discount: " + discount +"%");
         }
 
