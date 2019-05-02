@@ -14,7 +14,9 @@ public interface MealRepository {
 
     void update(Meal meal);
 
-    Meal getById(long id);
+    void remove(Meal meal);
+
+    Meal getMealById(long id);
 
     Collection<Meal> getAllMeals();
 

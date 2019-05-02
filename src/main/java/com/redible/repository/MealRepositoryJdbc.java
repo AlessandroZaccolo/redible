@@ -44,9 +44,13 @@ public class MealRepositoryJdbc implements MealRepository {
         jdbcTemplate.update(sql);
     }
 
+    public void remove(Meal meal){
+
+    }
 
 
-    public Meal getById(long id){
+
+    public Meal getMealById(long id){
         return jdbcTemplate.queryForObject("select * from meals where id = " + id,
                 (rs1, rowNum) -> getMeal(rs1));
     }
