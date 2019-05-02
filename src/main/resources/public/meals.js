@@ -12,9 +12,13 @@ axios.get("/api/meals")
 
         for (let meal of meals) {
 
-            const p = document.createElement("div");
-            p.textContent = `id:  ${meal.mealId}, Dish:  ${meal.name}, 
-            Qty:  ${meal.quantity}, Full-Price: ${meal.price} €, Discounted-Price: ${meal.discountedPrice} €`;
+            const p = document.createElement("h3");
+            p.textContent = `Id:  ${meal.mealId}, Meal:  ${meal.name}`;
             mealsContainer.appendChild(p);
+
+            const link = document.createElement("a");
+            link.textContent = `See details`;
+            link.href = "http://localhost:8080/meal.html?mealId=" + meal.mealId;
+            mealsContainer.appendChild(link);
         }
     });
