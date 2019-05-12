@@ -1,0 +1,16 @@
+html, h1, div, label, select {
+    color:green;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    font-family: Lato;
+
+}
+
+h1 {
+    font-size: 250%;
+}
+
