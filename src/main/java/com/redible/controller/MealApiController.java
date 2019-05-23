@@ -34,7 +34,7 @@ public class MealApiController {
     }
 
     @RequestMapping(method = GET, path="/{mealId}")
-    public Meal getMealById(@PathVariable long mealId){
+    public Meal getMealById(@PathVariable String mealId){
 
         Meal meal = mealService.getMealById(mealId);
 

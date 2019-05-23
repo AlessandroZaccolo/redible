@@ -22,9 +22,9 @@ public class MealService {
     }
 
 
-    public Meal getMealById(long id){
+    public Meal getMealById(String mealId){
 
-        return mealRepo.getMealById(id);
+        return mealRepo.getMealById(mealId);
     }
 
     public Collection<Meal> getAllMeals(){

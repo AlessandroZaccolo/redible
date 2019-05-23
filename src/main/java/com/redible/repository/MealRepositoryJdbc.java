@@ -44,13 +44,17 @@ public class MealRepositoryJdbc implements MealRepository {
         jdbcTemplate.update(sql);
     }
 
+    public void addOrUpdate(Meal meal){
+
+    }
+
     public void remove(Meal meal){
 
     }
 
 
 
-    public Meal getMealById(long id){
+    public Meal getMealById(String id){
         return jdbcTemplate.queryForObject("select * from meals where id = " + id,
                 (rs1, rowNum) -> getMeal(rs1));
     }
@@ -58,15 +62,12 @@ public class MealRepositoryJdbc implements MealRepository {
 
     private Meal getMeal(ResultSet rs) throws SQLException{
 
-        long id = rs.getLong("id");
         String name = rs.getString("name");
         int quantity = rs.getInt("quantity");
         double price = rs.getDouble("price");
         double discount = rs.getDouble("discount");
 
         Meal meal = new Meal (name, price, quantity, discount);
-        meal.setMealId(id);
-
         return meal;
     }
 

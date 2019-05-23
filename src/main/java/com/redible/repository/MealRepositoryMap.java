@@ -21,9 +21,6 @@ public class MealRepositoryMap {
     }
 
     public void add(Meal meal){
-        meal.setMealId(nextId);
-        mealMap.put(nextId, meal);
-        nextId++;
     }
 
     public Meal getById(long id){

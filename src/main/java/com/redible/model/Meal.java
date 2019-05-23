@@ -5,7 +5,7 @@ import java.text.NumberFormat;
 
 public class Meal {
 
-    private long mealId = 0;
+    private String mealId;
     private String name;
     private double price;
     private int quantity;
@@ -20,7 +20,7 @@ public class Meal {
         this.rating = 0.0;
     }
 
-    public Meal (long mealId, String name, double price, int quantity, double discount) {
+    public Meal (String mealId, String name, double price, int quantity, double discount) {
         this.mealId = mealId;
         this.name = name;
         this.price = price;
@@ -31,11 +31,11 @@ public class Meal {
 
 
 
-    public long getMealId() {
+    public String getMealId() {
         return mealId;
     }
 
-    public void setMealId(long mealId) {
+    public void setMealId(String mealId) {
         this.mealId = mealId;
     }
 
