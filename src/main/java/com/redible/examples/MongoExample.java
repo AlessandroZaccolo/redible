@@ -7,6 +7,9 @@ import com.redible.repository.MealRepositoryMongo;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static com.mongodb.client.model.Filters.eq;
 import static com.redible.util.database.MongoUtil.doc;
 
@@ -22,7 +25,6 @@ public class MongoExample {
         MongoDatabase database = mongoClient.getDatabase("mealsdb");
 
         MongoCollection<Document> mealsCol = database.getCollection("meals");
-
 
 
 
@@ -43,11 +45,12 @@ public class MongoExample {
                 .append("price", 6.0).append("quantity", 2).append("discount", 0.45);
 
 
+        /*
+
         mealsCol.deleteOne(meal1);
         mealsCol.deleteOne(meal2);
         mealsCol.deleteOne(meal3);
         mealsCol.deleteOne(meal4);
-
 
 
 
@@ -68,39 +71,27 @@ public class MongoExample {
         */
 
 
-        MongoCursor<Document> mealsCursor = mealsCol.find().iterator();
 
+
+
+        MongoCursor<Document> mealsCursor = mealsCol.find().iterator();
 
         while(mealsCursor.hasNext()){
 
             Document meal = mealsCursor.next();
 
-
-            long mealId = meal.getLong("mealId");
+            ObjectId id = meal.getObjectId("_id");
             String name = meal.getString("name");
             double price = meal.getDouble("price");
             int quantity = meal.getInteger("quantity");
             double discount = meal.getDouble("discount");
 
-
-
-
-
-            System.out.println(mealId+" Meal: "+ name +" Full-Price: "+ price
+            System.out.println(id +" Meal: "+ name +" Full-Price: "+ price
                     +" € Qty: " + quantity +" Discount: " + discount +"%");
         }
 
         mealsCursor.close();
 
-
-        Document meal = mealsCol.find(eq("mealId", 3)).first();
-
-        System.out.println(meal);
-
-        mealsCol.updateOne(eq("mealId", 3), new Document ("$set", new Document("price", 8.0)));
-
-
-        System.out.println(meal);
 
     }
 }
