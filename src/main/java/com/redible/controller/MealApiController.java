@@ -1,10 +1,16 @@
 package com.redible.controller;
 
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 import com.redible.controller.errors.MealNotExistsException;
 import com.redible.model.Meal;
 import com.redible.model.MealSearch;
 import com.redible.service.MealService;
+import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,12 +25,15 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 @RequestMapping(path="/api/meals")
 public class MealApiController {
 
+
+
     private MealService mealService;
 
     @Autowired
     public MealApiController(MealService mealService){
         this.mealService = mealService;
     }
+
 
 
     @RequestMapping(method = POST)
