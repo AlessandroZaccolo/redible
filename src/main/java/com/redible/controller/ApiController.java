@@ -23,7 +23,6 @@ public class ApiController {
 
     private MongoCollection<Document> meals;
 
-
     @Autowired
     public ApiController(@Value("${MONGO_URI}") String mongoUri) {
 
