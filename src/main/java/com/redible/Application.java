@@ -1,7 +1,6 @@
 package com.redible;
 
 
-import com.redible.repository.MealRepository;
 import com.redible.repository.MealRepositoryMongo;
 import com.redible.service.MealService;
 import org.springframework.boot.CommandLineRunner;
@@ -22,7 +21,7 @@ public class Application {
             MealService mealService,
             MealRepositoryMongo mealRepository){
         return args -> {
-
+            System.out.println("App started");
         };
     }
 
